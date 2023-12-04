@@ -26,8 +26,21 @@ functions:
       - http:
           method: POST
           path: /auction
-
+  getAuctions:
+    handler: src/handlers/getAuctions.handler
+    events:
+      - http:
+          method: GET
+          path: /auctions
+  getAuctionsById:
+    handler: src/handlers/getAuctionsById.handler
+    events:
+      - http:
+          method: GET
+          path: /auctions/{id}
 custom:
+  bundle:
+    linting: false
   AuctionsTable:
     name: !Ref AuctionsTable
     arn: !GetAtt AuctionsTable.Arn
